@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Tabs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background-color: #e0e0e0;
+      color: #343a40;
+    }
+
+    .copyright_container {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .heart_image {
+      color: red;
+      height: 18px;
+    }
+
+    .copyright_label {
+      font-size: 13px;
+    }
+
+    body.dark {
+      background-color: #292a2d;
+      color: #e3e3e3;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 45px;
+      height: 19px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 24px;
+      transition: 0.4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 12px;
+      width: 12px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+
+    input:checked+.slider {
+      background-color: #2196f3;
+    }
+
+    input:checked+.slider:before {
+      transform: translateX(26px);
+    }
+
+    body.dark {
+      background-color: #292a2d;
+      color: #e3e3e3;
+    }
+
+    li span {
+      vertical-align: middle;
+      /* Align with text */
+    }
+
+    li {
+      margin: 5px 0;
+      cursor: pointer;
+      display: flex;
+      /* Ensure li is a flex container */
+      justify-content: space-between;
+      /* Space between items */
+      align-items: center;
+      /* Align items vertically */
+      overflow: hidden;
+      /* Ensure overflow is hidden for ellipsis */
+    }
+
+    span {
+      white-space: nowrap;
+      /* Prevent line breaks */
+      overflow: hidden;
+      /* Hide overflow */
+      text-overflow: ellipsis;
+      /* Show ellipsis when text is truncated */
+    }
+
+    .close-icon {
+      margin-left: 10px;
+      /* Margin for close icon */
+    }
+
+    .active-tab {
+      background-color: #e0e0e0;
+      /* Change to your preferred highlight color */
+      color: #000;
+      /* Change text color if needed */
+    }
+
+    #searchInput {
+      border-radius: 24px;
+      text-align: center;
+    }
+
+    li:hover span {
+      white-space: normal;
+      /* Allow multiple lines */
+      overflow: visible;
+      /* Remove overflow restriction */
+      text-overflow: unset;
+      /* Disable ellipsis */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <h1>Open Tabs</h1> -->
+  <div class="toggle-container">
+    <div>
+      <input type="text" id="searchInput" placeholder="Search tabs..." />
+    </div>
+    <div>
+      <p id="tab_count" class="tab_count"></p>
+    </div>
+    <div>
+      <label class="toggle">
+        <input type="checkbox" id="darkModeToggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+
+  <ul id="tab-list"></ul>
+  <div class="copyright_container">
+    <svg class="heart_image" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24"
+      height="24">
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+    </svg>
+    <span class="copyright_label">abhisofriendly</span>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>
